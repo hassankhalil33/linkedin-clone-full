@@ -23,6 +23,7 @@ router.post('/job', companyMiddleware, createJob);
 router.delete('/job', companyMiddleware, deleteJob);
 router.put('/job', companyMiddleware, updateJob);
 
+//NEEDS TESTING
 router.get('/applicants', companyMiddleware, getApplicants);
 router.post('/applicants', companyMiddleware, confirmApplicant);
 router.delete('/applicants', companyMiddleware, deleteApplicant);
