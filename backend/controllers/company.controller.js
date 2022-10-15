@@ -18,11 +18,14 @@ const createJob = async (req, res) => {
   job.company = companyId;
 
   await job.save();
-  res.json({message: job._id})
+  res.json(job._id)
 }
 
 const deleteJob = async (req, res) => {
   const {id} = req.body;
+  if (!id) {
+    res.status(400).json({message: "no id"})
+  }
 
   await Job.findByIdAndDelete(id);
   
@@ -40,9 +43,21 @@ const updateJob = async (req, res) => {
   res.json({message: "success"})
 }
 
+const getJob = async (req, res) => {
+  const {id} = req.body;
+  if (!id) {
+    res.status(400).json({message: "no id"})
+  }
+
+  const job = await Job.findById(id);
+
+  res.json(job)
+}
+
 module.exports = {
   createJob,
   getCompany,
   deleteJob,
-  updateJob
+  updateJob,
+  getJob
 }
