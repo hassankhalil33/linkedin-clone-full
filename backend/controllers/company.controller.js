@@ -16,12 +16,21 @@ const createJob = async (req, res) => {
   job.title = title;
   job.description = description;
   job.company = companyId;
-  
+
   await job.save();
+  res.json({message: job._id})
+}
+
+const deleteJob = async (req, res) => {
+  const {id} = req.body;
+
+  await Job.findByIdAndDelete(id);
+  
   res.json({message: "success"})
 }
 
 module.exports = {
   createJob,
-  getCompany
+  getCompany,
+  deleteJob
 }
