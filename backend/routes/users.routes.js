@@ -1,10 +1,10 @@
 const {Router} = require('express');
-const {getAllUsers, getUser} = require('../controllers/user.controller');
+const {getAllCompanies, getUser} = require('../controllers/user.controller');
 const userMiddleware = require('../middlewares/user.middleware');
 const router = Router();
 
-router.get('/all', userMiddleware, getAllUsers);
-router.get('/user', userMiddleware, getUser);
+router.get('/companies', userMiddleware, getAllCompanies);
+router.get('/', userMiddleware, getUser);
 
 
 module.exports = router;

@@ -1,19 +1,40 @@
 const User = require('../models/user.model');
+const Company = require('../models/company.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const signup = async (req, res) => {
-  const { name, email, password, location } = req.body;
+  const { name, email, password, location, usertype } = req.body;
+
+  if(usertype == "user") {
+    try {
+    
+      const user = new User();
+      user.name = name;
+      user.email = email;
+      user.location = location;
+      user.password = await bcrypt.hash(password, 10);
+  
+      await user.save();
+      res.json(user);
+  
+    } catch(err) {
+      res.status(400).json({
+        message: err.message
+      });
+    }
+  }
 
   try {
-    const user = new User();
-    user.name = name;
-    user.email = email;
-    user.location = location;
-    user.password = await bcrypt.hash(password, 10);
+    
+    const company = new Company();
+    company.name = name;
+    company.email = email;
+    company.location = location;
+    company.password = await bcrypt.hash(password, 10);
 
-    await user.save();
-    res.json(user);
+    await company.save();
+    res.json(company);
 
   } catch(err) {
     res.status(400).json({
