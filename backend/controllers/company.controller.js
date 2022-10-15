@@ -106,6 +106,23 @@ const updateCompany = async (req, res) => {
   res.json({message: "success"})
 }
 
+const getApplicants = async (req, res) => {
+  const {id} = req.body;
+  if (!id) {
+    res.status(400).json({message: "no id"})
+  }
+
+  const job = await Job.findById(id);
+  applicants = [];
+
+  job.applicants.forEach(async element => {
+    const user = await User.findById(element);
+    applicants = [...applicants, user];
+  });
+  
+  res.json(applicants)
+}
+
 module.exports = {
   createJob,
   getCompany,
@@ -115,5 +132,6 @@ module.exports = {
   confirmApplicant,
   deleteApplicant,
   getAllJobs,
-  updateCompany
+  updateCompany,
+  getApplicants
 }
