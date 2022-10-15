@@ -4,7 +4,6 @@ const Job = require("../models/job.model");
 
 const getCompany = async (req, res) => {
   const company = req.company;
-  console.log(req.company.id)
   res.json(company)
 }
 
@@ -92,7 +91,8 @@ const confirmApplicant = async (req, res) => {
 }
 
 const updateCompany = async (req, res) => {
-  const {id, name, description, location, photo} = req.body;
+  const {_id: id} = req.company;
+  const {name, description, location, photo} = req.body;
   if (!id) {
     res.status(400).json({message: "no id"})
   }
