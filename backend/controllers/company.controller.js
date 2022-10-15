@@ -54,6 +54,12 @@ const getJob = async (req, res) => {
   res.json(job)
 }
 
+const getAllJobs = async (req, res) => {
+  const jobs = await Job.findMany({company: req.company._id});
+
+  res.json(jobs)
+}
+
 const deleteApplicant  = async (req, res) => {
   const {job_id, applicant_id} = req.body;
   if (!job_id || !applicant_id) {
@@ -92,5 +98,6 @@ module.exports = {
   updateJob,
   getJob,
   confirmApplicant,
-  deleteApplicant
+  deleteApplicant,
+  getAllJobs
 }

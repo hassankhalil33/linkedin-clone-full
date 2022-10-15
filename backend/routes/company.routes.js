@@ -1,11 +1,21 @@
 const {Router} = require('express');
-const {createJob, getCompany, deleteJob, updateJob, getJob} = require('../controllers/company.controller');
+const {
+  createJob,
+  getCompany,
+  deleteJob,
+  updateJob,
+  getJob,
+  getAllJobs,
+  confirmApplicant,
+  deleteApplicant
+  } = require('../controllers/company.controller');
 const companyMiddleware = require('../middlewares/company.middleware');
 const router = Router();
 
 router.get('/', companyMiddleware, getCompany);
 
-router.get('/job', companyMiddleware, getJob);
+router.get('/job', companyMiddleware, getAllJobs);
+router.get('/job/:id', companyMiddleware, getJob);
 router.post('/job', companyMiddleware, createJob);
 router.delete('/job', companyMiddleware, deleteJob);
 router.put('/job', companyMiddleware, updateJob);
