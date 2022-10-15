@@ -44,8 +44,10 @@ const signup = async (req, res) => {
 }
 
 const login = async (req, res) => {
-  const {email, password} = req.body;
-  const user = await User.findOne({email}).select("+password");
+  const {email, password, usertype} = req.body;
+
+  if(usertype == "user") {
+    const user = await User.findOne({email}).select("+password");
 
   if(!user) return res.status(404).json({message: "Invalid Credentials"});
 
@@ -53,7 +55,21 @@ const login = async (req, res) => {
   if(!isMatch) return res.status(404).json({message: "Invalid Credentials"});
 
   const token = jwt.sign({email: user.email}, process.env.JWT_SECRET_KEY, {
-    expiresIn: '3h'
+    expiresIn: '6h'
+  });
+
+  res.status(200).json(token)
+  }
+
+  const company = await Company.findOne({email}).select("+password");
+
+  if(!company) return res.status(404).json({message: "Invalid Credentials"});
+
+  const isMatch = bcrypt.compare(password, company.password);
+  if(!isMatch) return res.status(404).json({message: "Invalid Credentials"});
+
+  const token = jwt.sign({email: company.email}, process.env.JWT_SECRET_KEY, {
+    expiresIn: '6h'
   });
   res.status(200).json(token)
 }
