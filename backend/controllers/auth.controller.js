@@ -1,9 +1,10 @@
-const User = require('../models/users.model');
+const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const signup = async (req, res) => {
   const { name, email, password, location } = req.body;
+
   try {
     const user = new User();
     user.name = name;
