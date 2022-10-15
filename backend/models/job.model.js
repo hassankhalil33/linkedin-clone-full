@@ -25,7 +25,8 @@ const jobSchema = new mongoose.Schema({
   },
 
   timestamp: {
-    type: String
+    type: Date, 
+    default: Date.now
   }
 })
 

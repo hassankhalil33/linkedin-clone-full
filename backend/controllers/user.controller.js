@@ -37,10 +37,15 @@ const unfollowCompany = async (req, res) => {
   res.status(200).json({message: "success"})
 }
 
+const retrieveNotifications = async (req, res) => {
+
+}
+
 module.exports = {
   getAllCompanies,
   getUser,
   getAllJobs,
   followCompany,
-  unfollowCompany
+  unfollowCompany,
+  retrieveNotifications
 }
