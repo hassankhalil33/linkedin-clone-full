@@ -19,8 +19,10 @@ const getAllJobs = async (req, res) => {
 
 const followCompany = async (req, res) => {
   const companyId = req.body.company_id;
-  const user = await User.findOne(req.user.id).lean();
-  await User.updateOne(req.user.id, {following: [...user.following, companyId]})
+  console.log(req.user._id.toString());
+  const user = await User.findById(req.user._id.toString()).lean();
+  console.log(user);
+  await User.updateOne(req.user._id.toString(), {following: [...user.following, companyId]})
 
   res.status(200).json({message: "success"})
 }
