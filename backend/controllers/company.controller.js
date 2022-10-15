@@ -106,6 +106,7 @@ const updateCompany = async (req, res) => {
   res.json({message: "success"})
 }
 
+//High Return Time
 const getApplicants = async (req, res) => {
   const {id} = req.body;
   if (!id) {
@@ -113,14 +114,14 @@ const getApplicants = async (req, res) => {
   }
 
   const job = await Job.findById(id);
-  applicants = [];
+  allApplicants = [];
 
   job.applicants.forEach(async element => {
     const user = await User.findById(element);
-    applicants = [...applicants, user];
+    allApplicants = [...allApplicants, user];
   });
   
-  res.json(applicants)
+  res.json(allApplicants)
 }
 
 module.exports = {
