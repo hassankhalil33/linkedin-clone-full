@@ -29,8 +29,20 @@ const deleteJob = async (req, res) => {
   res.json({message: "success"})
 }
 
+const updateJob = async (req, res) => {
+  const {id, title, description} = req.body;
+  if (!id) {
+    res.status(400).json({message: "no id"})
+  }
+
+  await Job.findByIdAndUpdate(id, {title: title, description: description});
+  
+  res.json({message: "success"})
+}
+
 module.exports = {
   createJob,
   getCompany,
-  deleteJob
+  deleteJob,
+  updateJob
 }
