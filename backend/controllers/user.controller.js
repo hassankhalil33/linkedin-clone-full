@@ -7,9 +7,10 @@ const getAllUsers = async (req, res)=>{
 
 const getUser = async (req, res)=>{
   const user = req.user;
-  res.json({user: user})
+  res.json(user)
 }
 
 module.exports = {
-  getAllUsers
+  getAllUsers,
+  getUser
 }
