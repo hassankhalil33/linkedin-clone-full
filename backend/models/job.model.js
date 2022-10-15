@@ -25,7 +25,7 @@ const jobSchema = new mongoose.Schema({
   },
 
   timestamp: {
-    
+    type: String
   }
 })
 
