@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
   photo: {
     type: String
   },
-  
+
   description: {
     type: String,
     trim: true
@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema({
 
   following: {
     type: Array
+  },
+
+  workplace: {
+    type: String
   },
 
   cv: {
