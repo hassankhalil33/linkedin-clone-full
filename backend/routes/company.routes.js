@@ -7,12 +7,14 @@ const {
   getJob,
   getAllJobs,
   confirmApplicant,
-  deleteApplicant
+  deleteApplicant,
+  updateCompany
   } = require('../controllers/company.controller');
 const companyMiddleware = require('../middlewares/company.middleware');
 const router = Router();
 
 router.get('/', companyMiddleware, getCompany);
+router.put('/', companyMiddleware, updateCompany);
 
 router.get('/job', companyMiddleware, getAllJobs);
 router.get('/job/:id', companyMiddleware, getJob);

@@ -91,6 +91,21 @@ const confirmApplicant = async (req, res) => {
   res.json({message: "success"})
 }
 
+const updateCompany = async (req, res) => {
+  const {id, name, description, location, photo} = req.body;
+  if (!id) {
+    res.status(400).json({message: "no id"})
+  }
+
+  await Company.findByIdAndUpdate(id, {
+    name: name,
+    description: description,
+    location: location
+  });
+  
+  res.json({message: "success"})
+}
+
 module.exports = {
   createJob,
   getCompany,
@@ -99,5 +114,6 @@ module.exports = {
   getJob,
   confirmApplicant,
   deleteApplicant,
-  getAllJobs
+  getAllJobs,
+  updateCompany
 }
