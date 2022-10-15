@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const companySchema = new mongoose.Schema({
   name: {
     type: String,
     required: 'name is required',
@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
   photo: {
     type: String
   },
+
   description: {
     type: String,
     trim: true
@@ -34,15 +35,11 @@ const userSchema = new mongoose.Schema({
     trim:true
   },
 
-  following: {
+  jobs: {
     type: Array
   },
-
-  cv: {
-    type: String
-  }
 })
 
-const User = mongoose.model('User', userSchema);
+const Company = mongoose.model('Company', companySchema);
 
-module.exports = User;
+module.exports = Company;
