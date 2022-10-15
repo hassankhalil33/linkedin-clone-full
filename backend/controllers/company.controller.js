@@ -43,7 +43,7 @@ const updateJob = async (req, res) => {
 }
 
 const getJob = async (req, res) => {
-  const {id} = req.body;
+  const {id} = req.params;
   if (!id) {
     res.status(400).json({message: "no id"})
   }
@@ -54,7 +54,7 @@ const getJob = async (req, res) => {
 }
 
 const getAllJobs = async (req, res) => {
-  const jobs = await Job.findMany({company: req.company._id});
+  const jobs = await Job.find({company: req.company._id});
 
   res.json(jobs)
 }
