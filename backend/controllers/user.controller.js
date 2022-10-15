@@ -41,15 +41,16 @@ const unfollowCompany = async (req, res) => {
 
 const retrieveNotifications = async (req, res) => {
   const userFollowing = req.user.following;
-  // userFollowing.forEach(element => {
-  //   const jobs = await Job.find().lean();
-  // });
 
-  userJobs = userFollowing.map(async (followId) => {
-    return await Job.findById(followId).lean();
+  const userJobs = Promise.resolve(userFollowing.map(async (followId) => {
+    let job = await Job.find({company: followId}).lean();
+    return job
+  }))
+
+  userJobs.then(data => {
+    console.log(data);
+    res.json(data);
   })
-
-  res.json(userJobs)
 }
 
 module.exports = {
