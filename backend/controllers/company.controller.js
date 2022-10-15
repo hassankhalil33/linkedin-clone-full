@@ -54,10 +54,30 @@ const getJob = async (req, res) => {
   res.json(job)
 }
 
+const deleteApplicant  = async (req, res) => {
+  const {job_id, applicant_id} = req.body;
+  if (!job_id || !applicant_id) {
+    res.status(400).json({message: "no id"})
+  }
+
+  const job = await Job.findById(job_id);
+  const data = job.applicants.filter((id) => {
+    return id != applicant_id;
+  })
+
+  await Job.findByIdAndUpdate(job_id, {applicants: data});
+
+  res.json({message: "success"})
+}
+
+
+
 module.exports = {
   createJob,
   getCompany,
   deleteJob,
   updateJob,
-  getJob
+  getJob,
+  confirmApplicant,
+  deleteApplicant
 }
