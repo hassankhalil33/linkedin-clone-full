@@ -24,6 +24,11 @@ const jobSchema = new mongoose.Schema({
     type: String
   },
 
+  apply: {
+    type: Boolean,
+    default: true
+  },
+
   timestamp: {
     type: Date, 
     default: Date.now

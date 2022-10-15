@@ -70,7 +70,20 @@ const deleteApplicant  = async (req, res) => {
   res.json({message: "success"})
 }
 
+const confirmApplicant = async (req, res) => {
+  const {job_id, applicant_id} = req.body;
+  if (!job_id || !applicant_id) {
+    res.status(400).json({message: "no id"})
+  }
 
+  const job = await Job.findById(job_id);
+  const data = [];
+
+  await Job.findByIdAndUpdate(job_id, {applicants: data, apply: false, worker: applicant_id});
+  await User.findByIdAndUpdate(applicant_id, {workplace: `${job.title} @ ${req.company.name}`});
+
+  res.json({message: "success"})
+}
 
 module.exports = {
   createJob,
