@@ -12,7 +12,13 @@ const getUser = async (req, res)=>{
   res.json(user)
 }
 
+const getAllJobs = async (req, res)=>{
+  const jobs = await Job.find().lean();
+  res.json(jobs)
+}
+
 module.exports = {
   getAllCompanies,
-  getUser
+  getUser,
+  getAllJobs
 }

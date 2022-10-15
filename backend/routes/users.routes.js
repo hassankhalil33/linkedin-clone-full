@@ -5,6 +5,7 @@ const router = Router();
 
 router.get('/companies', userMiddleware, getAllCompanies);
 router.get('/', userMiddleware, getUser);
+router.get('/jobs', userMiddleware, getUser);
 
 
 module.exports = router;
