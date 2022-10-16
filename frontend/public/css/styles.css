@@ -15,3 +15,15 @@ body {
   align-items: center;
   background-color: #F3F2EF;
 }
+
+.login-form {
+  height: 350px;
+  width: 300px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  padding: 30px 5px;
+}
