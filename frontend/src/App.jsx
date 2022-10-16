@@ -1,10 +1,20 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World!</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <section className="login-section">
+
+            </section>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
