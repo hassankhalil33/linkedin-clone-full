@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
-function LoginForm() {
+function Input(props) {
+  const { type, placeholder, name } = props;
+  const [input, setInput] = useState("");
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  }
+
   return (
-    <h1>Batata</h1>
+    <input
+      onChange={handleChange}
+      value={input}
+      type={type}
+      name={name}
+      placeholder={placeholder}
+    />
   )
 }
 
-export default LoginForm;
+export default Input;
