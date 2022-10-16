@@ -29,7 +29,7 @@ const updateUser = async (req, res) => {
 }
 
 const getAllJobs = async (req, res) => {
-  const jobs = await Job.find().lean();
+  const jobs = await Job.find({apply: true}).lean();
   res.json(jobs)
 }
 
