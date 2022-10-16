@@ -89,7 +89,7 @@ const retrieveNotifications = async (req, res) => {
 const applyJob = async (req, res) => {
   const jobId = req.body.job_id;
   const job = await Job.findById(jobId);
-  const data = [job.applicants, req.user._id];
+  const data = [...job.applicants, req.user._id];
 
   await Job.findByIdAndUpdate(jobId, {
     applicants: data
