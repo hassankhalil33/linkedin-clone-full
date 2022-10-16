@@ -54,6 +54,19 @@ body {
   cursor: pointer;
 }
 
+.navigate-button {
+  background-color: #FFFFFF;
+  color: #0A66C2;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  text-decoration: none;
+}
+
+.navigate-button:hover {
+  cursor: pointer;
+}
+
 .login-form>div {
   display: flex;
   width: 100%;

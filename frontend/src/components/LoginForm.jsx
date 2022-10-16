@@ -27,7 +27,8 @@ function LoginForm() {
         />
       </div>
       <Button content={"Sign In"} />
-      <p>New User? <Button
+      <p>new user? <Button
+        className={"navigate-button"}
         content={"register"}
         onClick={() => navigate("/register")}
       />
