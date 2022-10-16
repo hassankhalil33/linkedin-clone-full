@@ -9,8 +9,8 @@ function LoginForm() {
       <div>
         <Input
           type={"text"}
-          name={"username"}
-          placeholder={"Username"}
+          name={"email"}
+          placeholder={"Email"}
         />
         <Input
           type={"password"}
