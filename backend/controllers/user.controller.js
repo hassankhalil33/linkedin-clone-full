@@ -119,7 +119,7 @@ const applyJobEasy = async (req, res) => {
   const jobs = await Job.find({title: {$regex: re}})
 
   jobs.forEach(async element => {
-    await Job.findAndUpdate({_id: element._id, apply: true} , {applicants: req.user._id})
+    await Job.updateMany({_id: element._id, apply: true} , {applicants: req.user._id})
   });
 
   res.json({message: "success"})
