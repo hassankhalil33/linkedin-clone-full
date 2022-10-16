@@ -12,6 +12,22 @@ const getUser = async (req, res) => {
   res.json(user)
 }
 
+const updateUser = async (req, res) => {
+  const {_id: id} = req.user;
+  const {name, description, location, photo} = req.body;
+  if (!id) {
+    res.status(400).json({message: "no id"})
+  }
+
+  await Company.findByIdAndUpdate(id, {
+    name: name,
+    description: description,
+    location: location
+  });
+  
+  res.json({message: "success"})
+}
+
 const getAllJobs = async (req, res) => {
   const jobs = await Job.find().lean();
   res.json(jobs)
@@ -74,5 +90,6 @@ module.exports = {
   getAllJobs,
   followCompany,
   unfollowCompany,
-  retrieveNotifications
+  retrieveNotifications,
+  updateUser
 }
