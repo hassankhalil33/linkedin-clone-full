@@ -19,7 +19,7 @@ const updateUser = async (req, res) => {
     res.status(400).json({message: "no id"})
   }
 
-  await Company.findByIdAndUpdate(id, {
+  await User.findByIdAndUpdate(id, {
     name: name,
     description: description,
     location: location
