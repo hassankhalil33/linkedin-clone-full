@@ -107,12 +107,12 @@ const updateCompany = async (req, res) => {
 }
 
 const getApplicants = async (req, res) => {
-  const {id} = req.body;
-  if (!id) {
+  const {job_id} = req.body;
+  if (!job_id) {
     res.status(400).json({message: "no id"})
   }
 
-  const job = await Job.findById(id);
+  const job = await Job.findById(job_id);
 
   const allApplicants = await User.find({ 
     $or: job.applicants.map((applicant) => {
