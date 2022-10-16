@@ -1,6 +1,7 @@
 import React from "react";
 import Input from "./Input";
 import Button from "./Button";
+import Select from "./Select";
 
 function LoginForm() {
   return (
@@ -17,11 +18,7 @@ function LoginForm() {
           name={"password"}
           placeholder={"Password"}
         />
-        <Input
-          type={"text"}
-          name={"usertype"}
-          placeholder={"User Type"}
-        />
+        <Select />
       </div>
       <Button content={"Sign In"} />
       <p>new user? <Button

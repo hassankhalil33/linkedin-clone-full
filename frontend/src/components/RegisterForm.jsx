@@ -1,6 +1,7 @@
 import React from "react";
 import Input from "./Input";
 import Button from "./Button";
+import Select from "./Select";
 
 function RegisterForm() {
   return (
@@ -17,11 +18,7 @@ function RegisterForm() {
           name={"password"}
           placeholder={"Password"}
         />
-        <Input
-          type={"text"}
-          name={"usertype"}
-          placeholder={"User Type"}
-        />
+        <Select />
         <Input
           type={"text"}
           name={"location"}

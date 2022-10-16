@@ -1,8 +1,9 @@
 import React from "react";
 
-function Select(props) {
+function Select() {
   return (
-    <select name="usertype" placeholder="Type">
+    <select required name="usertype" className="select-form">
+      <option value="" disabled selected>Type</option>
       <option value="user">User</option>
       <option value="company">Company</option>
     </select>
