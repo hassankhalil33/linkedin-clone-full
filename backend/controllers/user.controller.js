@@ -84,6 +84,18 @@ const retrieveNotifications = async (req, res) => {
   res.json(jobs)
 }
 
+const applyJob = async (req, res) => {
+  const jobId = req.body.job_id;
+  const job = await Job.findById(jobId);
+  const data = [job.applicants, req.user._id];
+
+  await Job.findByIdAndUpdate(jobId, {
+    applicants: data
+  })
+
+  res.status(200).json({message: "success"})
+}
+
 module.exports = {
   getAllCompanies,
   getUser,
@@ -91,5 +103,7 @@ module.exports = {
   followCompany,
   unfollowCompany,
   retrieveNotifications,
-  updateUser
+  updateUser,
+  applyJob,
+  revokeApplyJob
 }
