@@ -56,6 +56,10 @@ const unfollowCompany = async (req, res) => {
 const retrieveNotifications = async (req, res) => {
   const userFollowing = req.user.following;
 
+  if(userFollowing.length == 0) {
+    res.json(userFollowing)
+  }
+
   const jobs = await Job.find({
     $or: userFollowing.map((companyId) => {
       return {company: companyId}
