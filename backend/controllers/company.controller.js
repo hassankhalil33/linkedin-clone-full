@@ -106,7 +106,6 @@ const updateCompany = async (req, res) => {
   res.json({message: "success"})
 }
 
-//High Return Time
 const getApplicants = async (req, res) => {
   const {id} = req.body;
   if (!id) {
@@ -114,12 +113,11 @@ const getApplicants = async (req, res) => {
   }
 
   const job = await Job.findById(id);
-  allApplicants = [];
 
-  job.applicants.forEach(async element => {
-    const user = await User.findById(element);
-    allApplicants = [...allApplicants, user];
-  });
+  const allApplicants = await User.find({ 
+    $or: job.applicants.map((applicant) => {
+      return {_id: applicant}
+    })})
   
   res.json(allApplicants)
 }
