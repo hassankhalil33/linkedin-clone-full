@@ -101,8 +101,9 @@ const applyJob = async (req, res) => {
 const revokeApplyJob = async (req, res) => {
   const jobId = req.body.job_id;
   const job = await Job.findById(jobId);
-  const data = job.following.filter((id) => {
-    return id != req.user._id
+  const data = job.applicants.filter((id) => {
+    if(id.toString() == req.user._id.toString()) return
+    else return id
   })
 
   await Job.findByIdAndUpdate(jobId, {
