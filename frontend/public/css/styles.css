@@ -88,3 +88,7 @@ body {
   border-radius: 5px;
   border: 1px solid rgb(216, 216, 216);
 }
+
+.login-form>p {
+  font-size: 14px;
+}

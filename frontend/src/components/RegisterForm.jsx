@@ -3,7 +3,7 @@ import Input from "./Input";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 
-function LoginForm() {
+function RegisterForm() {
   const navigate = useNavigate();
 
   return (
@@ -25,16 +25,21 @@ function LoginForm() {
           name={"usertype"}
           placeholder={"User Type"}
         />
+        <Input
+          type={"text"}
+          name={"location"}
+          placeholder={"Location"}
+        />
       </div>
-      <Button content={"Sign In"} />
-      <p>new user? <Button
+      <Button content={"Register"} />
+      <p>existing user? <Button
         className={"navigate-button"}
-        content={"register"}
-        onClick={() => navigate("/register")}
+        content={"login"}
+        onClick={() => navigate("/")}
       />
       </p>
     </form>
   )
 }
 
-export default LoginForm;
+export default RegisterForm;
