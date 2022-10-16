@@ -39,18 +39,29 @@ const unfollowCompany = async (req, res) => {
   res.status(200).json({message: "success"})
 }
 
+// const retrieveNotifications = async (req, res) => {
+//   const userFollowing = req.user.following;
+
+//   const userJobs = Promise.resolve(userFollowing.map(async (followId) => {
+//     let job = await Job.find({company: followId}).lean();
+//     return job
+//   }))
+
+//   userJobs.then(data => {
+//     console.log(data);
+//     res.json(data);
+//   })
+// }
+
 const retrieveNotifications = async (req, res) => {
   const userFollowing = req.user.following;
 
-  const userJobs = Promise.resolve(userFollowing.map(async (followId) => {
-    let job = await Job.find({company: followId}).lean();
-    return job
-  }))
+  const jobs = await Job.find({
+    $or: userFollowing.map((companyId) => {
+      return {company: companyId}
+    })}).lean();
 
-  userJobs.then(data => {
-    console.log(data);
-    res.json(data);
-  })
+  res.json(jobs)
 }
 
 module.exports = {
