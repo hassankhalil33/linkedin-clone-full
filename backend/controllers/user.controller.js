@@ -55,6 +55,8 @@ const unfollowCompany = async (req, res) => {
   res.status(200).json({message: "success"})
 }
 
+//CANT RESOLVE PROMISE
+
 // const retrieveNotifications = async (req, res) => {
 //   const userFollowing = req.user.following;
 
@@ -110,6 +112,18 @@ const revokeApplyJob = async (req, res) => {
   res.status(200).json({message: "success"})
 }
 
+const applyJobEasy = async (req, res) => {
+  const jobPosition = req.body.job_position;
+  const re = new RegExp(jobPosition, "i")
+  const jobs = await Job.find({title: {$regex: re}})
+
+  jobs.forEach(async element => {
+    await Job.findAndUpdate({_id: element._id, apply: true} , {applicants: req.user._id})
+  });
+
+  res.json({message: "success"})
+}
+
 module.exports = {
   getAllCompanies,
   getUser,
@@ -119,5 +133,6 @@ module.exports = {
   retrieveNotifications,
   updateUser,
   applyJob,
-  revokeApplyJob
+  revokeApplyJob,
+  applyJobEasy
 }
