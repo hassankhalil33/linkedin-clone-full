@@ -1,11 +1,8 @@
 import React from "react";
 import Input from "./Input";
 import Button from "./Button";
-import { useNavigate } from "react-router-dom";
 
 function RegisterForm() {
-  const navigate = useNavigate();
-
   return (
     <form className="login-form">
       <h3>LinkedOut</h3>
@@ -35,7 +32,7 @@ function RegisterForm() {
       <p>existing user? <Button
         className={"navigate-button"}
         content={"login"}
-        onClick={() => navigate("/")}
+        url={"/"}
       />
       </p>
     </form>

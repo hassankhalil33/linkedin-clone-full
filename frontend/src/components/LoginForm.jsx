@@ -1,11 +1,8 @@
 import React from "react";
 import Input from "./Input";
 import Button from "./Button";
-import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
-  const navigate = useNavigate();
-
   return (
     <form className="login-form">
       <h3>LinkedOut</h3>
@@ -30,7 +27,7 @@ function LoginForm() {
       <p>new user? <Button
         className={"navigate-button"}
         content={"register"}
-        onClick={() => navigate("/register")}
+        url={"/register"}
       />
       </p>
     </form>
