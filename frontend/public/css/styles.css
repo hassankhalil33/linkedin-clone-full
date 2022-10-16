@@ -27,3 +27,29 @@ body {
   background-color: #FFFFFF;
   padding: 30px 5px;
 }
+
+.login-form>h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 28px;
+  color: #0A66C2;
+  font-weight: bold;
+}
+
+.login-form>button {
+  background-color: #0A66C2;
+  border-radius: 10px;
+  color: #F3F2EF;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 25px;
+  margin-top: 15px;
+  width: 50%;
+  border: none;
+  text-decoration: none;
+  align-self: center;
+}
+
+.login-form>button:hover {
+  background-color: #5e9fe0;
+  cursor: pointer;
+}
