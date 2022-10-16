@@ -1,9 +1,11 @@
 import React from "react";
 
-function LoginForm() {
+function Button(props) {
+  const { content, className } = props;
+
   return (
-    <h1>Batata</h1>
+    <button className={className}>{content}</button>
   )
 }
 
-export default LoginForm;
+export default Button;
