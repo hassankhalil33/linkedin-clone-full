@@ -98,10 +98,10 @@ body {
 }
 
 .select-form {
-  height: 30px;
+  height: 32px;
   margin: 3px auto;
   justify-content: center;
-  width: 88%;
+  width: 89%;
   gap: 15px;
   text-align: center;
   font-size: 15px;
