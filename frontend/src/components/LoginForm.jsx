@@ -3,7 +3,9 @@ import Input from "./Input";
 import Button from "./Button";
 import Select from "./Select";
 
-function LoginForm() {
+function LoginForm(props) {
+  const { clicked } = props
+
   return (
     <form className="login-form">
       <h3>LinkedOut</h3>
@@ -20,7 +22,10 @@ function LoginForm() {
         />
         <Select />
       </div>
-      <Button content={"Sign In"} />
+      <Button
+        content={"Sign In"}
+        click={clicked}
+      />
       <p>new user? <Button
         className={"navigate-button"}
         content={"register"}

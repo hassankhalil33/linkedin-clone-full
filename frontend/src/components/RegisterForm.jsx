@@ -3,7 +3,9 @@ import Input from "./Input";
 import Button from "./Button";
 import Select from "./Select";
 
-function RegisterForm() {
+function RegisterForm(props) {
+  const { clicked } = props
+
   return (
     <form className="login-form">
       <h3>LinkedOut</h3>
@@ -25,7 +27,9 @@ function RegisterForm() {
           placeholder={"Location"}
         />
       </div>
-      <Button content={"Register"} />
+      <Button
+        content={"Register"}
+        click={clicked} />
       <p>existing user? <Button
         className={"navigate-button"}
         content={"login"}
